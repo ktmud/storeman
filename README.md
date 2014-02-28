@@ -9,7 +9,7 @@ With built in [Redis](https://github.com/mranney/node_redis/) and
 
 ## Usage
 
-```
+```javascript
 var Storeman = require('storeman')
 var Redis = require('redis')
 var levelup = require('levelup')
