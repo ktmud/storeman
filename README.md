@@ -1,27 +1,35 @@
 # Storeman
 
-A man to help you unify API for mischellaneous storage clients.
+A man to help you unify API for mischellaneous storage engines.
 
-Provide a handful of of useful methods: `get`, `set`(with ttl), `del`, `mget`. 
+Provide a handful set of of useful methods: `get`, `set` *(with ttl)*, `del`, `mget`. 
 
-With built in Redis and leveldb support.
+With built in [Redis](https://github.com/mranney/node_redis/) and
+[LevelUP](https://github.com/rvagg/node-levelup) support.
 
 ## Usage
 
 ```
 var Storeman = require('storeman')
 var Redis = require('redis')
-var client = Redis.createClient()
+var levelup = require('levelup')
 
-var store = new Storeman({
-    prefix: 'store:',
-    client: client,
+// cache with Redis
+var cache = new Storeman({
+    prefix: 'cache:',
+    client: Redis.createClient(),
     encode: function(data){
         return JSON.stringify(data)
     },
     decode: function(data) {
         return JSON.parse(data)
     }
+})
+
+// persistent storage with leveldb
+var store = new Storeman({
+    prefix: 'store:',
+    client: levelup('./var/leveldb')
 })
 ```
 
@@ -30,7 +38,7 @@ var store = new Storeman({
 The main purpose of this module is to provide a higher level of consistent API over
 different storage clients. That means:
 
-  - consistent method name:
+  - consistent method name
   - consistent function signature
   - consistent return results
 
@@ -39,7 +47,7 @@ All methods include:
 ### store.get(key, callback)
 
 Will `callback(null, undefined)` when no data is found,
-not return a `null` or emit an error.
+not return a `null` (as redis does) or emit an error (as leveldb does).
 
 ### store.set(key, value, [ttl], callback)
 
