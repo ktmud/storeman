@@ -18,6 +18,7 @@
     "jsonize"
   ],
   "dependencies": {
+    "after": "0.8.x",
     "debug": "0.7.x"
   },
   "author": "ktmud <kissmud@gmail.com>",
