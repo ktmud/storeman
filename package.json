@@ -1,6 +1,6 @@
 {
   "name": "storeman",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Simple storage API unifier with prefix support",
   "main": "lib/storeman.js",
   "scripts": {

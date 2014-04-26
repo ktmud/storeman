@@ -1,4 +1,3 @@
---require blanket
 --require should
 --timeout 200
 --reporter spec
