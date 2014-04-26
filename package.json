@@ -4,7 +4,7 @@
   "description": "Simple storage API unifier with prefix support",
   "main": "lib/storeman.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -21,10 +21,23 @@
     "after": "0.8.x",
     "debug": "0.7.x"
   },
+  "devDependencies": {
+    "lru-cache": "*",
+    "istanbul": "*",
+    "mocha": "*"
+  },
   "author": "ktmud <kissmud@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ktmud/storeman/issues"
+  },
+  "config": {
+    "travis-cov": {
+      "threshold": 70
+    },
+    "blanket": {
+      "pattern": "storeman/lib/"
+    }
   },
   "homepage": "https://github.com/ktmud/storeman"
 }

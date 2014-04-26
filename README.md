@@ -4,7 +4,7 @@ A man to help you unify API for mischellaneous storage engines.
 
 Provide a handful set of of useful methods: `get`, `set` *(with ttl)*, `del`, `mget`. 
 
-With built in [Redis](https://github.com/mranney/node_redis/) and
+With built-in [Redis](https://github.com/mranney/node_redis/) and
 [LevelUP](https://github.com/rvagg/node-levelup) support.
 
 ## Usage
@@ -48,6 +48,7 @@ All methods include:
 
 Will `callback(null, undefined)` when no data is found,
 not return a `null` (as redis does) or emit an error (as leveldb does).
+This behavior is for in case you want really set data as `null`.
 
 ### store.set(key, value, [ttl], callback)
 
