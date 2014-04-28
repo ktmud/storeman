@@ -61,6 +61,22 @@ describe('Storeman', function() {
       store.mget(['wawa', 'kaka']).should.eql([{ test: 1 }, 2])
     })
 
+    it('can async get', function(done) {
+      store.get('wawa', function(err, result) {
+        should.not.exist(err)
+        result.should.eql({ test: 1 })
+        done()
+      })
+    })
+
+    it('can async mget', function(done) {
+      store.mget(['wawa', 'kaka'], function(err, result) {
+        should.not.exist(err)
+        result.should.eql([{ test: 1 }, 2])
+        done()
+      })
+    })
+
   })
 
   describe('del', function() {
